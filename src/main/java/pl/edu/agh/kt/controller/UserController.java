@@ -16,7 +16,7 @@ import pl.edu.agh.kt.service.UserService;
 import pl.edu.agh.kt.util.JwtUtil;
 
 @RestController
-public class LoginController {
+public class UserController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
