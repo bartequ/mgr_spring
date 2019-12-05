@@ -27,9 +27,9 @@ public class UserController {
     @Autowired
     private JwtUtil jwtTokenUtil;
 
-    @GetMapping(path = "/hello")
+    @GetMapping(path = "/test")
     public String hello() {
-        return "Hello World";
+        return "Test successful";
     }
 
     @PostMapping(path = "/registration")

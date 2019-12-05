@@ -2,11 +2,13 @@ package pl.edu.agh.kt.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.edu.agh.kt.validation.ValidateUsername;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
@@ -18,12 +20,17 @@ public class User implements UserDetails {
     private Integer id;
 
     @NotNull
+    @ValidateUsername
     private String username;
 
     @NotNull
     private String password;
 
     @NotNull
+    private String passwordConfirm;
+
+    @NotNull
+    @Email
     private String email;
 
     public Integer getId() {
@@ -36,6 +43,10 @@ public class User implements UserDetails {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
     public String getEmail() {
@@ -52,6 +63,10 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
     public void setEmail(String email) {
