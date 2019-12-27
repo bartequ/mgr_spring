@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import pl.edu.agh.kt.entity.User;
 import pl.edu.agh.kt.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -26,7 +28,13 @@ public class UserService {
 
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        if (userRepository.findByUsername(user.getUsername()) == null) {
+            userRepository.save(user);
+        }
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 
 }

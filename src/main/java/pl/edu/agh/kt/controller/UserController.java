@@ -15,6 +15,8 @@ import pl.edu.agh.kt.model.AuthenticationResponse;
 import pl.edu.agh.kt.service.UserService;
 import pl.edu.agh.kt.util.JwtUtil;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -31,6 +33,12 @@ public class UserController {
     public String hello() {
         return "Test successful";
     }
+
+    @GetMapping(path = "/user")
+    public List<User> hellou() {
+      return  userService.getUsers();
+    }
+
 
     @PostMapping(path = "/registration")
     public void hello(@RequestBody User user) {
